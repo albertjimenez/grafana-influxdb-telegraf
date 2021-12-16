@@ -13,6 +13,7 @@ services:
       - 'env.influxdb'
     volumes:
       - ./data_influxdb:/var/lib/influxdb
+    restart: always
 
   telegraf:
     image: telegraf:1.16.3   
@@ -21,6 +22,7 @@ services:
       - influxdb
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    restart: always
 
   grafana:
     image: grafana/grafana:7.3.7     
@@ -34,6 +36,7 @@ services:
       - influxdb
     volumes:
       - ./data_grafana:/var/lib/grafana
+    restart: always
 
 volumes:
   data_influxdb:
